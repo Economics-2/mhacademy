@@ -1,0 +1,17 @@
+// Firebase Console → Firestore Database → Rules  এ এটি পেস্ট করে Publish করুন।
+// নিচের ADMIN_EMAIL-এর জায়গায় আপনার অ্যাডমিন ইমেইল (যে ইমেইলে Authentication-এ ইউজার খুলবেন) লিখুন।
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /people/{id} {
+      allow read: if true;
+      allow create, update: if request.auth != null
+        && request.auth.token.email == 'ADMIN_EMAIL'
+        && request.resource.data.kind in ['teacher', 'student']
+        && request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() < 120
+        && request.resource.data.photo is string && request.resource.data.photo.size() < 150000;
+      allow delete: if request.auth != null && request.auth.token.email == 'ADMIN_EMAIL';
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

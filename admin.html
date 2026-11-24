@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>পরীক্ষা অ্যাডমিন | MH একাডেমি</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d3b66;--navy2:#092a49;--gold:#c98a2c;--gold2:#f2c265;--bg:#f4f1ea;--card:#fff;--ink:#1f2a33;--muted:#7a7468;--line:#e3ddcf;--ok:#2e7d32;--bad:#c62828;}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Hind Siliguri','Noto Sans Bengali',Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14.5px;line-height:1.5}
+header.top{background:var(--navy2);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:20}
+header.top b{font-size:16px}
+header.top small{opacity:.75;display:block;font-size:11.5px}
+header.top .sp{flex:1}
+#saved{font-size:12px;color:var(--gold2)}
+header.top a{color:#fff;font-size:12.5px;border:1px solid rgba(255,255,255,.35);border-radius:16px;padding:4px 12px;text-decoration:none}
+nav#tabs{background:var(--navy);display:flex;overflow-x:auto;position:sticky;top:50px;z-index:19;scrollbar-width:none}
+nav#tabs::-webkit-scrollbar{display:none}
+nav#tabs button{flex:0 0 auto;background:none;border:none;color:#cfd8e3;padding:12px 15px;font:inherit;font-size:13.5px;font-weight:500;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+nav#tabs button.on{color:#fff;border-bottom-color:var(--gold2);font-weight:700}
+main{max-width:1100px;margin:0 auto;padding:14px}
+.card{background:var(--card);border-radius:12px;box-shadow:0 1px 6px rgba(9,42,73,.08);padding:14px;margin-bottom:14px}
+.card h2{margin:0 0 4px;font-size:16px;color:var(--navy)}
+.card h3{margin:14px 0 6px;font-size:14px;color:var(--navy)}
+.hint{color:var(--muted);font-size:12.5px;margin:0 0 10px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:8px}
+.fld{display:flex;flex-direction:column;gap:3px;min-width:140px;flex:1}
+.fld label{font-size:12px;font-weight:600;color:var(--navy)}
+input,select,textarea{font:inherit;font-size:14px;padding:7px 9px;border:1px solid #cfc8b8;border-radius:8px;background:#fff;color:var(--ink);width:100%}
+textarea{min-height:80px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(201,138,44,.45);border-color:var(--gold)}
+input[type=checkbox]{width:auto;accent-color:var(--navy)}
+button.b{font:inherit;font-size:13.5px;font-weight:600;border:none;border-radius:8px;padding:8px 14px;background:var(--navy);color:#fff;cursor:pointer}
+button.b.gold{background:var(--gold);color:#1f2a33}
+button.b.line{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+button.b.red{background:#fff;color:var(--bad);border:1.5px solid var(--bad)}
+button.b.sm{padding:4px 9px;font-size:12px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:5px 7px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{background:#f1ece0;color:var(--navy);font-size:12.5px;white-space:nowrap}
+td input,td select{padding:5px 6px;min-width:70px}
+td.n{width:46px;color:var(--muted);text-align:center}
+.marks td input{width:64px;min-width:64px;text-align:center;padding:5px 3px}
+.marks td input.bad{border-color:var(--bad);background:#fdecea}
+.marks th.sticky,.marks td.sticky{position:sticky;left:0;background:#fff;z-index:2}
+.marks th.sticky{background:#f1ece0}
+.tag{display:inline-block;border-radius:10px;padding:1px 9px;font-size:11.5px;font-weight:700}
+.tag.ok{background:#e4f4e5;color:var(--ok)}.tag.bad{background:#fdecea;color:var(--bad)}.tag.warn{background:#fff3d6;color:#8a5a0f}
+.pubgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:8px 0}
+.pubgrid label{display:flex;gap:8px;align-items:flex-start;background:#f8f5ee;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13px}
+.pubgrid label small{display:block;color:var(--muted);font-size:11.5px}
+.chk{display:flex;gap:12px;flex-wrap:wrap}
+.chk label{display:flex;gap:5px;align-items:center;font-size:13px}
+.warnbox{background:#fff3d6;border:1px solid #ecd08a;border-radius:10px;padding:9px 12px;font-size:13px;margin:8px 0}
+.okbox{background:#e8f5e9;border:1px solid #b7dcb9;border-radius:10px;padding:9px 12px;font-size:13px;margin:8px 0}
+.steps{margin:6px 0 0;padding-left:20px}.steps li{margin:3px 0}
+.pill{background:var(--navy);color:#fff;border-radius:12px;padding:1px 9px;font-size:12px}
+details{border:1px solid var(--line);border-radius:10px;margin:6px 0;padding:6px 10px;background:#fcfbf7}
+summary{cursor:pointer;font-weight:600;color:var(--navy)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1f2a33;color:#fff;padding:9px 16px;border-radius:20px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50;max-width:90vw}
+#toast.show{opacity:1}
+.empty{text-align:center;color:var(--muted);padding:20px}
+@media(max-width:600px){main{padding:10px}.fld{min-width:120px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div><b>পরীক্ষা অ্যাডমিন</b><small>MH একাডেমি · শুধু প্রতিষ্ঠানের ব্যবহারের জন্য</small></div>
+  <div class="sp"></div>
+  <span id="saved">✓ সংরক্ষিত</span>
+  <a href="index.html" target="_blank">পাবলিক পেজ</a>
+</header>
+<nav id="tabs"></nav>
+<main id="view"></main>
+<script src="people.js"></script>
+<script src="firebase-config.js"></script>
+<script type="module" src="fb.js"></script>
+<div id="toast"></div>
+
+<script>
+(function () {
+'use strict';
+
+/* =========================================================
+   Constants
+   ========================================================= */
+var KEY = 'mh_exam_admin_v1';
+var CLASSES = [
+  { id: 6, n: '৬ষ্ঠ শ্রেণি' }, { id: 7, n: '৭ম শ্রেণি' }, { id: 8, n: '৮ম শ্রেণি' },
+  { id: 9, n: '৯ম শ্রেণি' }, { id: 10, n: '১০ম শ্রেণি' }, { id: 11, n: 'একাদশ শ্রেণি' }, { id: 12, n: 'দ্বাদশ শ্রেণি' }
+];
+var TYPES = ['অর্ধবার্ষিক পরীক্ষা', 'বার্ষিক পরীক্ষা', 'প্রাক-নির্বাচনী পরীক্ষা', 'নির্বাচনী পরীক্ষা', 'অন্যান্য পরীক্ষা'];
+var GROUPS = ['', 'বিজ্ঞান', 'মানবিক', 'ব্যবসায় শিক্ষা'];
+var SCALE = [
+  { min: 80, g: 'A+', p: 5 }, { min: 70, g: 'A', p: 4 }, { min: 60, g: 'A-', p: 3.5 },
+  { min: 50, g: 'B', p: 3 }, { min: 40, g: 'C', p: 2 }, { min: 33, g: 'D', p: 1 }, { min: 0, g: 'F', p: 0 }
+];
+var SUBJECT_SETS = {
+  junior: ['বাংলা', 'ইংরেজি', 'গণিত', 'বিজ্ঞান', 'বাংলাদেশ ও বিশ্বপরিচয়', 'ধর্ম ও নৈতিক শিক্ষা', 'তথ্য ও যোগাযোগ প্রযুক্তি'],
+  secondary: ['বাংলা', 'ইংরেজি', 'গণিত', 'পদার্থবিজ্ঞান', 'রসায়ন', 'জীববিজ্ঞান', 'উচ্চতর গণিত', 'তথ্য ও যোগাযোগ প্রযুক্তি'],
+  higher: ['বাংলা', 'ইংরেজি', 'তথ্য ও যোগাযোগ প্রযুক্তি', 'পদার্থবিজ্ঞান', 'রসায়ন', 'গণিত']
+};
+var DEFAULT_INSTR = '১. পরীক্ষা শুরুর অন্তত ৩০ মিনিট আগে কেন্দ্রে উপস্থিত থাকতে হবে।\n২. প্রবেশপত্র ও পরিচয়পত্র সঙ্গে আনতে হবে।\n৩. মোবাইল ফোন ও অন্যান্য ইলেকট্রনিক ডিভাইস আনা নিষিদ্ধ।\n৪. পরীক্ষার হলে কোনো ধরনের অসদুপায় অবলম্বন করা যাবে না।';
+var TABS = [
+  ['exams', '১. পরীক্ষা'], ['students', '২. শিক্ষার্থী'], ['notices', '৩. নোটিশ'], ['routine', '৪. রুটিন'],
+  ['seats', '৫. সিট প্ল্যান'], ['marks', '৬. নম্বর ইনপুট'], ['publish', '৭. ফলাফল ও প্রকাশ'], ['people', '৮. শিক্ষক ও শিক্ষার্থী']
+];
+
+/* =========================================================
+   Helpers
+   ========================================================= */
+var $ = function (s, r) { return (r || document).querySelector(s); };
+var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+var BN_D = '০১২৩৪৫৬৭৮৯';
+function en2(s) { return String(s == null ? '' : s).replace(/[০-৯]/g, function (d) { return BN_D.indexOf(d); }); }
+function toNum(s) { var t = en2(s).trim(); if (t === '') return ''; var n = parseFloat(t); return isNaN(n) ? '' : n; }
+function uid() { return 'e' + Math.random().toString(36).slice(2, 8); }
+function pad2(n) { return (n < 10 ? '0' : '') + n; }
+function todayISO() { var d = new Date(); return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
+function clsName(id) { var c = CLASSES.filter(function (x) { return x.id === +id; })[0]; return c ? c.n : id; }
+function groupFor(c) { return c <= 8 ? 'junior' : (c <= 10 ? 'secondary' : 'higher'); }
+function opt(v, t, sel) { return '<option value="' + esc(v) + '"' + (String(v) === String(sel) ? ' selected' : '') + '>' + esc(t) + '</option>'; }
+function setPath(o, p, v) {
+  var a = p.split('.');
+  for (var i = 0; i < a.length - 1; i++) {
+    var k = a[i];
+    if (o[k] == null) o[k] = /^\d+$/.test(a[i + 1]) ? [] : {};
+    o = o[k];
+  }
+  o[a[a.length - 1]] = v;
+}
+var toastT;
+function toast(msg) { var t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('show'); }, 2600); }
+function download(name, text, type) {
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text], { type: type || 'text/plain' }));
+  a.download = name; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+function parseISO(s) { var p = String(s).split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+function isoOf(d) { return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
+
+/* =========================================================
+   State + autosave
+   ========================================================= */
+function blank() {
+  return {
+    v: 1,
+    school: { name: 'MH একাডেমি', center: 'MH একাডেমি', principal: 'অধ্যক্ষ', controller: 'পরীক্ষা নিয়ন্ত্রক', instructions: DEFAULT_INSTR },
+    exams: [], notices: [], students: {}, routines: {}, rooms: {}, seatOpts: {}, seats: {}, subjects: {}, marks: {}
+  };
+}
+function load() {
+  try { var r = localStorage.getItem(KEY); if (r) return Object.assign(blank(), JSON.parse(r)); } catch (e) {}
+  return blank();
+}
+var S = load();
+var UI = { tab: 'exams', exam: null, cls: 9 };
+var saveT;
+function save() {
+  var el = $('#saved');
+  el.textContent = 'সংরক্ষণ হচ্ছে…';
+  clearTimeout(saveT);
+  saveT = setTimeout(function () {
+    try { localStorage.setItem(KEY, JSON.stringify(S)); el.textContent = '✓ সংরক্ষিত (এই ব্রাউজারে)'; }
+    catch (e) { el.textContent = '⚠ সংরক্ষণ হয়নি — ব্যাকআপ নিন'; }
+  }, 250);
+}
+function exam(id) { return S.exams.filter(function (e) { return e.id === id; })[0]; }
+function curExam() { var e = exam(UI.exam); if (!e && S.exams.length) { UI.exam = S.exams[0].id; e = S.exams[0]; } return e; }
+function students(c) { return (S.students[c] = S.students[c] || []); }
+function ensure(obj, a, b) { obj[a] = obj[a] || {}; if (b !== undefined) obj[a][b] = obj[a][b] || []; return obj[a]; }
+
+/* =========================================================
+   Grading engine
+   ========================================================= */
+function scaleFor(pct) { for (var i = 0; i < SCALE.length; i++) if (pct >= SCALE[i].min) return SCALE[i]; return SCALE[SCALE.length - 1]; }
+function overallGrade(gpa) { if (gpa >= 5) return 'A+'; if (gpa >= 4) return 'A'; if (gpa >= 3.5) return 'A-'; if (gpa >= 3) return 'B'; if (gpa >= 2) return 'C'; if (gpa >= 1) return 'D'; return 'F'; }
+function partsOf(sub) { return (sub.parts && sub.parts.length) ? sub.parts : [{ n: 'মোট', f: +sub.full || 0 }]; }
+
+/* one subject for one student. vals = array of strings per part */
+function subjectResult(sub, vals) {
+  var parts = partsOf(sub), total = 0, filled = 0, absent = false, bad = false, pm = [];
+  parts.forEach(function (p, i) {
+    var v = vals && vals[i] != null ? String(vals[i]).trim() : '';
+    if (v === '') { pm.push(null); return; }
+    filled++;
+    if (/^(a|abs|অনু|অনুপস্থিত)$/i.test(v)) { absent = true; pm.push('A'); return; }
+    var n = parseFloat(en2(v));
+    if (isNaN(n) || n < 0 || n > p.f) { bad = true; pm.push(null); return; }
+    total += n; pm.push(n);
+  });
+  var out = { n: sub.name, f: +sub.full || 0, pm: pm, total: total, complete: filled === parts.length && !bad, bad: bad, absent: absent };
+  if (!out.complete) return out;
+  var pass = sub.pass != null && sub.pass !== '' ? +sub.pass : Math.ceil(out.f * 0.33);
+  if (absent || total < pass) { out.gr = 'F'; out.gp = 0; out.failed = true; }
+  else { var s = scaleFor(out.f ? total / out.f * 100 : 0); out.gr = s.g === 'F' ? 'D' : s.g; out.gp = s.g === 'F' ? 1 : s.p; out.failed = false; }
+  return out;
+}
+
+function compute(eid, cls) {
+  var subs = ((S.subjects[eid] || {})[cls]) || [];
+  var mk = ((S.marks[eid] || {})[cls]) || {};
+  var rows = students(cls).slice().sort(function (a, b) { return a.roll - b.roll; }).map(function (st) {
+    var vals = mk[st.roll] || [];
+    var sr = subs.map(function (s, i) { return subjectResult(s, vals[i]); });
+    var complete = subs.length > 0 && sr.every(function (x) { return x.complete; });
+    var row = { roll: st.roll, name: st.name, father: st.father, group: st.group, photo: st.photo, subs: sr, complete: complete, bad: sr.some(function (x) { return x.bad; }) };
+    row.total = sr.reduce(function (a, x) { return a + x.total; }, 0);
+    if (complete) {
+      var failed = sr.some(function (x) { return x.failed; });
+      row.ok = !failed;
+      row.gpa = failed ? 0 : Math.min(5, Math.round(sr.reduce(function (a, x) { return a + x.gp; }, 0) / sr.length * 100) / 100);
+      row.gr = failed ? 'F' : overallGrade(row.gpa);
+    }
+    return row;
+  });
+  var ranked = rows.filter(function (r) { return r.complete && r.ok; }).sort(function (a, b) {
+    return (b.gpa - a.gpa) || (b.total - a.total) || (a.roll - b.roll);
+  });
+  ranked.forEach(function (r, i) {
+    var prev = ranked[i - 1];
+    r.pos = (prev && prev.gpa === r.gpa && prev.total === r.total) ? prev.pos : i + 1;
+  });
+  return { subs: subs, rows: rows };
+}
+
+/* =========================================================
+   Seat allocation
+   ========================================================= */
+function allocate(eid) {
+  var e = exam(eid), opts = (S.seatOpts[eid] = S.seatOpts[eid] || {}), rooms = S.rooms[eid] || [];
+  var cl = (opts.classes && opts.classes.length ? opts.classes : e.classes).slice();
+  var lists = cl.map(function (c) { return students(c).slice().sort(function (a, b) { return a.roll - b.roll; }).map(function (s) { return { c: +c, roll: s.roll }; }); });
+  var queue = [];
+  if (opts.mode === 'mix') {
+    var more = true, i = 0;
+    while (more) { more = false; lists.forEach(function (l) { if (i < l.length) { queue.push(l[i]); more = true; } }); i++; }
+  } else { lists.forEach(function (l) { queue = queue.concat(l); }); }
+  var seats = [], qi = 0, left = 0;
+  rooms.forEach(function (r) {
+    var cap = +r.cap || 0;
+    for (var s = 1; s <= cap && qi < queue.length; s++) { var q = queue[qi++]; seats.push({ c: q.c, roll: q.roll, room: r.name, seat: s }); }
+  });
+  left = queue.length - qi;
+  S.seats[eid] = seats;
+  return { placed: seats.length, left: left };
+}
+
+/* =========================================================
+   Build public data.js
+   ========================================================= */
+function buildPublic(sample) {
+  var out = {
+    v: 1, updated: new Date().toISOString(), sample: !!sample,
+    school: S.school, scale: SCALE.map(function (s) { return { min: s.min, g: s.g, p: s.p }; }),
+    exams: [], notices: [], routines: {}, students: {}, seats: {}, results: {}
+  };
+  var needStudents = {};
+  S.exams.forEach(function (e) {
+    var any = e.pub.routine || e.pub.admit || e.pub.seat || e.pub.result;
+    var hasNotice = S.notices.some(function (n) { return n.pub && n.exam === e.id; });
+    if (!any && !hasNotice) return;
+    out.exams.push({ id: e.id, name: e.name, type: e.type, year: e.year, classes: e.classes, pub: { routine: !!e.pub.routine, admit: !!e.pub.admit, seat: !!e.pub.seat, result: !!e.pub.result } });
+    if (e.pub.routine || e.pub.admit) {
+      var rt = {};
+      Object.keys(S.routines[e.id] || {}).forEach(function (c) {
+        var rows = S.routines[e.id][c].filter(function (r) { return r.date || r.subject; });
+        if (rows.length) rt[c] = rows.map(function (r) { return { d: r.date, t: r.time, s: r.subject, c: r.code || '' }; });
+      });
+      out.routines[e.id] = rt;
+    }
+    if (e.pub.admit || e.pub.seat) e.classes.forEach(function (c) { needStudents[c] = true; });
+    if (e.pub.seat) out.seats[e.id] = (S.seats[e.id] || []).map(function (s) { return { c: s.c, r: s.roll, rm: s.room, s: s.seat }; });
+    if (e.pub.result) {
+      var res = {};
+      e.classes.forEach(function (c) {
+        var cm = compute(e.id, c), list = [];
+        cm.rows.forEach(function (r) {
+          if (!r.complete) return;
+          list.push({
+            r: r.roll, n: r.name, f: r.father || '', g: r.group || '',
+            subs: r.subs.map(function (s) {
+              var o = { n: s.n, f: s.f, m: s.total, gr: s.gr, gp: s.gp };
+              var sub = cm.subs[r.subs.indexOf(s)];
+              if (sub.parts && sub.parts.length > 1) o.pt = sub.parts.map(function (p, i) { return [p.n, p.f, s.pm[i]]; });
+              if (s.absent) o.ab = 1;
+              return o;
+            }),
+            tot: r.total, gpa: r.gpa, gr: r.gr, ok: r.ok ? 1 : 0, pos: r.ok ? r.pos : 0
+          });
+        });
+        if (list.length) res[c] = list;
+      });
+      out.results[e.id] = res;
+    }
+  });
+  Object.keys(needStudents).forEach(function (c) {
+    var l = students(c).filter(function (s) { return s.name; });
+    if (l.length) out.students[c] = l.map(function (s) { return { r: s.roll, n: s.name, f: s.father || '', g: s.group || '', p: s.photo || '' }; });
+  });
+  out.notices = S.notices.filter(function (n) { return n.pub; })
+    .map(function (n) { return { id: n.id, exam: n.exam || '', title: n.title, body: n.body || '', date: n.date, link: n.link || '' }; });
+  return out;
+}
+function dataJS(sample) {
+  return '/* MH Academy — পরীক্ষার তথ্য। অ্যাডমিন পেজ থেকে তৈরি; হাতে সম্পাদনা করবেন না। */\nwindow.MH_DATA=' + JSON.stringify(buildPublic(sample)) + ';\n';
+}
+
+/* =========================================================
+   Views
+   ========================================================= */
+var view = $('#view');
+function renderTabs() {
+  $('#tabs').innerHTML = TABS.map(function (t) { return '<button data-tab="' + t[0] + '" class="' + (UI.tab === t[0] ? 'on' : '') + '">' + t[1] + '</button>'; }).join('');
+}
+function examPicker(label) {
+  if (!S.exams.length) return '';
+  return '<div class="fld"><label>' + (label || 'পরীক্ষা') + '</label><select data-ui="exam">' + S.exams.map(function (e) { return opt(e.id, e.name, UI.exam); }).join('') + '</select></div>';
+}
+function classPicker(ids) {
+  return '<div class="fld"><label>শ্রেণি</label><select data-ui="cls">' + (ids || CLASSES.map(function (c) { return c.id; })).map(function (c) { return opt(c, clsName(c), UI.cls); }).join('') + '</select></div>';
+}
+function needExam() { return '<div class="card"><div class="empty">আগে "১. পরীক্ষা" ট্যাবে একটি পরীক্ষা যোগ করুন।</div></div>'; }
+
+/* ---------- 1. Exams ---------- */
+function vExams() {
+  var sc = S.school, h = '';
+  h += '<div class="card"><h2>প্রতিষ্ঠানের তথ্য</h2><p class="hint">প্রবেশপত্র ও মার্কশিটে এই তথ্য ছাপা হবে।</p><div class="row">' +
+    fieldP('প্রতিষ্ঠানের নাম', 'school.name') + fieldP('পরীক্ষা কেন্দ্রের নাম', 'school.center') + '</div><div class="row">' +
+    fieldP('স্বাক্ষর ১ (পদবি)', 'school.controller') + fieldP('স্বাক্ষর ২ (পদবি)', 'school.principal') + '</div>' +
+    '<div class="fld"><label>প্রবেশপত্রের নির্দেশনা</label><textarea data-path="school.instructions">' + esc(sc.instructions) + '</textarea></div></div>';
+  h += '<div class="card"><h2>নতুন পরীক্ষা</h2><p class="hint">পরীক্ষার ধরন বেছে বছর দিন, তারপর কোন কোন শ্রেণি অংশ নেবে সেটি ঠিক করুন।</p>' +
+    '<div class="row"><div class="fld"><label>ধরন</label><select id="nxType">' + TYPES.map(function (t) { return opt(t, t); }).join('') + '</select></div>' +
+    '<div class="fld" style="max-width:120px"><label>বছর</label><input id="nxYear" value="' + new Date().getFullYear() + '"></div></div>' +
+    '<div class="chk" id="nxCls">' + CLASSES.map(function (c) { return '<label><input type="checkbox" value="' + c.id + '" checked> ' + c.n + '</label>'; }).join('') + '</div>' +
+    '<div class="row" style="margin-top:10px"><button class="b gold" data-act="addExam">+ পরীক্ষা যোগ করুন</button></div></div>';
+  if (!S.exams.length) h += '<div class="card"><div class="empty">এখনো কোনো পরীক্ষা নেই।</div></div>';
+  S.exams.forEach(function (e, i) {
+    h += '<div class="card"><div class="row"><div class="fld" style="flex:3"><label>পরীক্ষার নাম</label><input data-path="exams.' + i + '.name" value="' + esc(e.name) + '"></div>' +
+      '<div><button class="b red sm" data-act="delExam" data-i="' + i + '">মুছুন</button></div></div>' +
+      '<label class="hint" style="display:block">অংশগ্রহণকারী শ্রেণি</label><div class="chk">' +
+      CLASSES.map(function (c) { return '<label><input type="checkbox" data-act="toggleExamClass" data-i="' + i + '" data-c="' + c.id + '"' + (e.classes.indexOf(c.id) > -1 ? ' checked' : '') + '> ' + c.n + '</label>'; }).join('') + '</div>' +
+      '<h3>শিক্ষার্থীরা কী দেখতে পাবে (প্রকাশ নিয়ন্ত্রণ)</h3><div class="pubgrid">' +
+      pubBox(i, 'routine', 'পরীক্ষার রুটিন', 'রুটিন ট্যাবের তথ্য দেখা যাবে') +
+      pubBox(i, 'admit', 'প্রবেশপত্র', 'শ্রেণি ও রোল দিয়ে প্রবেশপত্র ডাউনলোড') +
+      pubBox(i, 'seat', 'সিট প্ল্যান', 'কক্ষ ও আসন নম্বর দেখা যাবে') +
+      pubBox(i, 'result', 'ফলাফল', 'শ্রেণি ও রোল দিয়ে মার্কশিট দেখা যাবে') + '</div>' +
+      '<p class="hint">টিক দেওয়া অংশগুলো "৭. ফলাফল ও প্রকাশ" থেকে data.js ডাউনলোড করার পরই সাইটে আসবে।</p></div>';
+  });
+  return h;
+}
+function fieldP(label, path, extra) {
+  var v = path.split('.').reduce(function (o, k) { return o == null ? o : o[k]; }, S);
+  return '<div class="fld"><label>' + label + '</label><input data-path="' + path + '" value="' + esc(v) + '"' + (extra || '') + '></div>';
+}
+function pubBox(i, k, t, d) { return '<label><input type="checkbox" data-path="exams.' + i + '.pub.' + k + '"' + (S.exams[i].pub[k] ? ' checked' : '') + '><span><b>' + t + '</b><small>' + d + '</small></span></label>'; }
+
+/* ---------- 2. Students ---------- */
+function vStudents() {
+  var list = students(UI.cls), h = '';
+  h += '<div class="card"><h2>শিক্ষার্থীর তালিকা</h2><p class="hint">প্রবেশপত্র, সিট প্ল্যান ও ফলাফলের জন্য শ্রেণি অনুযায়ী তালিকা তৈরি করুন। ছবির ঘরে ছবির লিংক দিলে প্রবেশপত্রে ছবি আসবে (ঐচ্ছিক)।</p><div class="row">' + classPicker() +
+    '<div><span class="pill">' + list.length + ' জন</span></div></div>';
+  var rolls = {}, dup = {};
+  list.forEach(function (s) { if (rolls[s.roll]) dup[s.roll] = 1; rolls[s.roll] = 1; });
+  if (Object.keys(dup).length) h += '<div class="warnbox">একই রোল একাধিকবার আছে: ' + Object.keys(dup).join(', ') + '</div>';
+  h += '<div class="tw"><table><tr><th>#</th><th>রোল</th><th>নাম</th><th>পিতার নাম</th><th>গ্রুপ</th><th>ছবির লিংক</th><th></th></tr>';
+  list.forEach(function (s, i) {
+    var p = 'students.' + UI.cls + '.' + i + '.';
+    h += '<tr><td class="n">' + (i + 1) + '</td><td><input style="width:70px;min-width:70px" data-num="1" data-path="' + p + 'roll" value="' + esc(s.roll) + '"></td>' +
+      '<td><input data-path="' + p + 'name" value="' + esc(s.name) + '"></td><td><input data-path="' + p + 'father" value="' + esc(s.father) + '"></td>' +
+      '<td><select data-path="' + p + 'group">' + GROUPS.map(function (g) { return opt(g, g || '—', s.group); }).join('') + '</select></td>' +
+      '<td><input data-path="' + p + 'photo" value="' + esc(s.photo) + '" placeholder="https://..."></td>' +
+      '<td><button class="b red sm" data-act="delStudent" data-i="' + i + '">✕</button></td></tr>';
+  });
+  h += '</table></div><div class="row" style="margin-top:10px"><button class="b" data-act="addStudent">+ একজন যোগ করুন</button></div>';
+  h += '<h3>একসাথে অনেক শিক্ষার্থী যোগ করুন</h3><p class="hint">Excel/Sheet থেকে কপি করে বসান। প্রতি লাইনে একজন: <b>রোল, নাম, পিতার নাম, গ্রুপ</b> (কমা বা ট্যাব দিয়ে আলাদা; শেষ দুটি ঐচ্ছিক)।</p>' +
+    '<textarea id="bulk" placeholder="১, রহিম উদ্দিন, করিম উদ্দিন, বিজ্ঞান"></textarea><div class="row" style="margin-top:8px">' +
+    '<button class="b gold" data-act="importStudents" data-mode="append">তালিকায় যোগ করুন</button><button class="b line" data-act="importStudents" data-mode="replace">পুরনো তালিকা মুছে নতুন বসান</button></div></div>';
+  return h;
+}
+
+/* ---------- 3. Notices ---------- */
+function vNotices() {
+  var h = '<div class="card"><h2>পরীক্ষার নোটিশ</h2><p class="hint">নোটিশ লিখে "প্রকাশ করুন" টিক দিন। প্রকাশিত নোটিশ সাইটের "সর্বশেষ নোটিশ" ও পরীক্ষা কেন্দ্রে দেখা যাবে।</p>' +
+    '<div class="row"><div class="fld"><label>সংশ্লিষ্ট পরীক্ষা (ঐচ্ছিক)</label><select id="ntExam"><option value="">— সাধারণ নোটিশ —</option>' + S.exams.map(function (e) { return opt(e.id, e.name); }).join('') + '</select></div>' +
+    '<div class="fld" style="max-width:170px"><label>তারিখ</label><input type="date" id="ntDate" value="' + todayISO() + '"></div></div>' +
+    '<div class="fld"><label>শিরোনাম</label><input id="ntTitle" placeholder="যেমন: অর্ধবার্ষিক পরীক্ষার বিজ্ঞপ্তি"></div>' +
+    '<div class="fld" style="margin-top:8px"><label>বিস্তারিত</label><textarea id="ntBody"></textarea></div>' +
+    '<div class="row" style="margin-top:8px"><div class="fld"><label>সংযুক্তির লিংক (PDF/ছবি, ঐচ্ছিক)</label><input id="ntLink" placeholder="https://..."></div>' +
+    '<label style="display:flex;gap:6px;align-items:center;padding-bottom:8px"><input type="checkbox" id="ntPub" checked> প্রকাশ করুন</label></div>' +
+    '<button class="b gold" data-act="addNotice">+ নোটিশ যোগ করুন</button></div>';
+  if (!S.notices.length) h += '<div class="card"><div class="empty">এখনো কোনো নোটিশ নেই।</div></div>';
+  S.notices.slice().map(function (n, i) { return { n: n, i: i }; }).sort(function (a, b) { return a.n.date < b.n.date ? 1 : -1; }).forEach(function (x) {
+    var n = x.n, i = x.i, p = 'notices.' + i + '.';
+    h += '<div class="card"><div class="row"><div class="fld" style="flex:3"><label>শিরোনাম</label><input data-path="' + p + 'title" value="' + esc(n.title) + '"></div>' +
+      '<div class="fld" style="max-width:170px"><label>তারিখ</label><input type="date" data-path="' + p + 'date" value="' + esc(n.date) + '"></div></div>' +
+      '<div class="fld"><label>বিস্তারিত</label><textarea data-path="' + p + 'body">' + esc(n.body) + '</textarea></div>' +
+      '<div class="row" style="margin-top:8px"><div class="fld"><label>সংযুক্তির লিংক</label><input data-path="' + p + 'link" value="' + esc(n.link) + '"></div>' +
+      '<label style="display:flex;gap:6px;align-items:center;padding-bottom:8px"><input type="checkbox" data-path="' + p + 'pub"' + (n.pub ? ' checked' : '') + '> প্রকাশিত</label>' +
+      '<button class="b red sm" data-act="delNotice" data-i="' + i + '">মুছুন</button></div></div>';
+  });
+  return h;
+}
+
+/* ---------- 4. Routine ---------- */
+var WD = ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'];
+function vRoutine() {
+  var e = curExam(); if (!e) return needExam();
+  var rows = ((S.routines[e.id] || {})[UI.cls]) || [];
+  var h = '<div class="card"><h2>পরীক্ষার রুটিন</h2><p class="hint">পরীক্ষা ও শ্রেণি বেছে তারিখ, সময় ও বিষয় লিখুন।</p><div class="row">' + examPicker() + classPicker(e.classes) + '</div>';
+  h += '<div class="tw"><table><tr><th>#</th><th>তারিখ</th><th>বার</th><th>সময়</th><th>বিষয়</th><th>বিষয় কোড</th><th></th></tr>';
+  rows.forEach(function (r, i) {
+    var p = 'routines.' + e.id + '.' + UI.cls + '.' + i + '.';
+    h += '<tr><td class="n">' + (i + 1) + '</td><td><input type="date" data-path="' + p + 'date" value="' + esc(r.date) + '"></td>' +
+      '<td>' + (r.date ? WD[parseISO(r.date).getDay()] : '—') + '</td>' +
+      '<td><input data-path="' + p + 'time" value="' + esc(r.time) + '" style="min-width:150px"></td>' +
+      '<td><input data-path="' + p + 'subject" value="' + esc(r.subject) + '" style="min-width:150px"></td>' +
+      '<td><input data-path="' + p + 'code" value="' + esc(r.code) + '" style="width:80px;min-width:80px"></td>' +
+      '<td><button class="b red sm" data-act="delRoute" data-i="' + i + '">✕</button></td></tr>';
+  });
+  h += '</table></div><div class="row" style="margin-top:10px"><button class="b" data-act="addRoute">+ সারি যোগ করুন</button><button class="b line" data-act="sortRoute">তারিখ অনুযায়ী সাজান</button></div>';
+  h += '<h3>দ্রুত তৈরি</h3><div class="row"><div class="fld" style="max-width:170px"><label>প্রথম পরীক্ষার তারিখ</label><input type="date" id="genStart" value="' + todayISO() + '"></div>' +
+    '<div><button class="b gold" data-act="genRoute">"নম্বর ইনপুট"-এর বিষয় তালিকা থেকে রুটিন বানান</button></div></div>' +
+    '<p class="hint">শুক্র ও শনিবার বাদ দিয়ে প্রতিদিন একটি করে বিষয় বসবে। পরে তারিখ বদলানো যাবে।</p>' +
+    '<div class="row"><div class="fld"><label>অন্য শ্রেণির রুটিন কপি করুন</label><select id="copyFrom">' + e.classes.filter(function (c) { return c !== UI.cls; }).map(function (c) { return opt(c, clsName(c)); }).join('') + '</select></div>' +
+    '<div><button class="b line" data-act="copyRoute">কপি করুন</button></div></div></div>';
+  return h;
+}
+
+/* ---------- 5. Seats ---------- */
+function vSeats() {
+  var e = curExam(); if (!e) return needExam();
+  var opts = (S.seatOpts[e.id] = S.seatOpts[e.id] || { mode: 'seq', classes: e.classes.slice() });
+  var rooms = (S.rooms[e.id] = S.rooms[e.id] || []);
+  var h = '<div class="card"><h2>সিট প্ল্যান</h2><p class="hint">কক্ষের নাম ও আসন সংখ্যা দিন, তারপর "আসন বণ্টন করুন" চাপুন।</p><div class="row">' + examPicker() + '</div>';
+  h += '<h3>পরীক্ষা কক্ষ</h3><div class="tw"><table><tr><th>#</th><th>কক্ষের নাম</th><th>আসন সংখ্যা</th><th></th></tr>';
+  rooms.forEach(function (r, i) {
+    h += '<tr><td class="n">' + (i + 1) + '</td><td><input data-path="rooms.' + e.id + '.' + i + '.name" value="' + esc(r.name) + '"></td>' +
+      '<td><input data-num="1" data-path="rooms.' + e.id + '.' + i + '.cap" value="' + esc(r.cap) + '" style="width:90px"></td>' +
+      '<td><button class="b red sm" data-act="delRoom" data-i="' + i + '">✕</button></td></tr>';
+  });
+  h += '</table></div><div class="row" style="margin-top:8px"><button class="b" data-act="addRoom">+ কক্ষ যোগ করুন</button></div>';
+  h += '<h3>কোন শ্রেণিগুলো বসবে</h3><div class="chk">' + e.classes.map(function (c) {
+    return '<label><input type="checkbox" data-act="toggleSeatClass" data-c="' + c + '"' + (opts.classes.indexOf(c) > -1 ? ' checked' : '') + '> ' + clsName(c) + '</label>';
+  }).join('') + '</div>';
+  h += '<div class="row" style="margin-top:10px"><div class="fld" style="max-width:340px"><label>বসানোর নিয়ম</label><select data-path="seatOpts.' + e.id + '.mode">' +
+    opt('seq', 'শ্রেণি ও রোল অনুযায়ী ক্রমানুসারে', opts.mode) + opt('mix', 'বিভিন্ন শ্রেণি মিশিয়ে (পাশাপাশি আলাদা শ্রেণি)', opts.mode) + '</select></div>' +
+    '<div><button class="b gold" data-act="allocate">আসন বণ্টন করুন</button></div></div></div>';
+  var seats = S.seats[e.id] || [];
+  if (seats.length) {
+    var byRoom = {};
+    seats.forEach(function (s) { (byRoom[s.room] = byRoom[s.room] || []).push(s); });
+    var total = 0; opts.classes.forEach(function (c) { total += students(c).length; });
+    h += '<div class="card"><h2>বণ্টনের ফল <span class="pill">' + seats.length + '/' + total + ' জন</span></h2>';
+    if (seats.length < total) h += '<div class="warnbox">' + (total - seats.length) + ' জনের আসন হয়নি। আরও কক্ষ বা আসন যোগ করে আবার বণ্টন করুন।</div>';
+    Object.keys(byRoom).forEach(function (rm) {
+      h += '<details><summary>' + esc(rm) + ' — ' + byRoom[rm].length + ' জন</summary><div class="tw"><table><tr><th>আসন</th><th>শ্রেণি</th><th>রোল</th><th>নাম</th></tr>' +
+        byRoom[rm].map(function (s) {
+          var st = students(s.c).filter(function (x) { return x.roll === s.roll; })[0];
+          return '<tr><td>' + s.seat + '</td><td>' + clsName(s.c) + '</td><td>' + s.roll + '</td><td>' + esc(st ? st.name : '') + '</td></tr>';
+        }).join('') + '</table></div></details>';
+    });
+    h += '</div>';
+  }
+  return h;
+}
+
+/* ---------- 6. Marks ---------- */
+function vMarks() {
+  var e = curExam(); if (!e) return needExam();
+  var subs = ((S.subjects[e.id] || {})[UI.cls]) || [];
+  var list = students(UI.cls).slice().sort(function (a, b) { return a.roll - b.roll; });
+  var h = '<div class="card"><h2>নম্বর ইনপুট</h2><p class="hint">প্রথমে বিষয় তালিকা ঠিক করুন, তারপর প্রতিটি শিক্ষার্থীর নম্বর বসান। অনুপস্থিত হলে <b>A</b> লিখুন।</p><div class="row">' + examPicker() + classPicker(e.classes) + '</div>';
+  h += '<h3>বিষয় তালিকা</h3><div class="tw"><table><tr><th>#</th><th>বিষয়</th><th>পূর্ণমান</th><th>পাস নম্বর</th><th>নম্বরের অংশ (ঐচ্ছিক)</th><th></th></tr>';
+  subs.forEach(function (s, i) {
+    var p = 'subjects.' + e.id + '.' + UI.cls + '.' + i + '.';
+    var partsTxt = (s.parts && s.parts.length) ? s.parts.map(function (x) { return x.n + ':' + x.f; }).join(', ') : '';
+    h += '<tr><td class="n">' + (i + 1) + '</td><td><input data-path="' + p + 'name" value="' + esc(s.name) + '" style="min-width:150px"></td>' +
+      '<td><input data-num="1" data-subfull="' + i + '" data-path="' + p + 'full" value="' + esc(s.full) + '" style="width:80px;min-width:80px"' + (partsTxt ? ' readonly title="অংশ থেকে স্বয়ংক্রিয়"' : '') + '></td>' +
+      '<td><input data-num="1" data-path="' + p + 'pass" value="' + esc(s.pass) + '" style="width:80px;min-width:80px"></td>' +
+      '<td><input data-parts="' + i + '" value="' + esc(partsTxt) + '" placeholder="যেমন: লিখিত:70, MCQ:30" style="min-width:210px"></td>' +
+      '<td><button class="b red sm" data-act="delSubj" data-i="' + i + '">✕</button></td></tr>';
+  });
+  h += '</table></div><div class="row" style="margin-top:8px"><button class="b" data-act="addSubj">+ বিষয় যোগ করুন</button><button class="b line" data-act="defSubj">এই শ্রেণির জন্য নমুনা বিষয় তালিকা বসান</button></div>' +
+    '<p class="hint">পাস নম্বর খালি রাখলে পূর্ণমানের ৩৩% ধরা হবে। গ্রেড: A+ (৮০+)=৫, A (৭০+)=৪, A- (৬০+)=৩.৫, B (৫০+)=৩, C (৪০+)=২, D (৩৩+)=১, F=০। যেকোনো বিষয়ে F হলে অনুত্তীর্ণ।</p></div>';
+  if (!list.length) return h + '<div class="card"><div class="empty">এই শ্রেণিতে শিক্ষার্থী নেই। আগে "২. শিক্ষার্থী" ট্যাবে যোগ করুন।</div></div>';
+  if (!subs.length) return h + '<div class="card"><div class="empty">বিষয় যোগ করলে নম্বরের ছক আসবে।</div></div>';
+  var mk = ((S.marks[e.id] || {})[UI.cls]) || {};
+  h += '<div class="card"><h2>নম্বরের ছক <span class="pill">' + list.length + ' জন</span></h2><p class="hint">Enter চাপলে নিচের ঘরে যাবে।</p><div class="tw"><table class="marks"><tr><th class="sticky" rowspan="2">রোল</th><th rowspan="2">নাম</th>';
+  subs.forEach(function (s) { h += '<th colspan="' + partsOf(s).length + '" style="text-align:center">' + esc(s.name) + ' (' + s.full + ')</th>'; });
+  h += '<th rowspan="2">মোট</th><th rowspan="2">GPA</th><th rowspan="2">ফল</th></tr><tr>';
+  subs.forEach(function (s) { partsOf(s).forEach(function (p) { h += '<th style="text-align:center;font-weight:500">' + (partsOf(s).length > 1 ? esc(p.n) + ' (' + p.f + ')' : '') + '</th>'; }); });
+  h += '</tr>';
+  list.forEach(function (st) {
+    var vals = mk[st.roll] || [];
+    h += '<tr data-roll="' + st.roll + '"><td class="sticky"><b>' + st.roll + '</b></td><td style="white-space:nowrap">' + esc(st.name) + '</td>';
+    subs.forEach(function (s, si) {
+      partsOf(s).forEach(function (p, pi) {
+        var v = vals[si] && vals[si][pi] != null ? vals[si][pi] : '';
+        h += '<td><input data-m="' + st.roll + '|' + si + '|' + pi + '" value="' + esc(v) + '" inputmode="decimal" autocomplete="off"></td>';
+      });
+    });
+    h += '<td class="tot"></td><td class="gpa"></td><td class="res"></td></tr>';
+  });
+  h += '</table></div></div>';
+  return h;
+}
+function refreshMarkRows() {
+  var e = curExam(); if (!e) return;
+  var cm = compute(e.id, UI.cls);
+  cm.rows.forEach(function (r) {
+    var tr = $('tr[data-roll="' + r.roll + '"]'); if (!tr) return;
+    $('.tot', tr).textContent = r.total || '';
+    $('.gpa', tr).textContent = r.complete ? r.gpa.toFixed(2) : '';
+    $('.res', tr).innerHTML = r.complete ? '<span class="tag ' + (r.ok ? 'ok' : 'bad') + '">' + (r.ok ? r.gr : 'F') + '</span>' : (r.bad ? '<span class="tag bad">ভুল মান</span>' : '');
+    $$('input[data-m]', tr).forEach(function (inp) {
+      var pr = inp.getAttribute('data-m').split('|'), sub = cm.subs[+pr[1]], part = partsOf(sub)[+pr[2]], v = inp.value.trim();
+      var n = parseFloat(en2(v)), isBad = v !== '' && !/^(a|abs|অনু|অনুপস্থিত)$/i.test(v) && (isNaN(n) || n < 0 || n > part.f);
+      inp.classList.toggle('bad', isBad);
+    });
+  });
+}
+function markInput(t) {
+  var e = curExam(), pr = t.getAttribute('data-m').split('|'), roll = pr[0], si = +pr[1], pi = +pr[2];
+  var m = ensure(ensure(S.marks, e.id), UI.cls); m = S.marks[e.id][UI.cls]; if (Array.isArray(m)) m = S.marks[e.id][UI.cls] = {};
+  m[roll] = m[roll] || []; m[roll][si] = m[roll][si] || [];
+  m[roll][si][pi] = t.value.trim();
+  save(); refreshMarkRows();
+}
+
+/* ---------- 7. Publish ---------- */
+function vPublish() {
+  var h = '<div class="card"><h2>প্রকাশের আগে যাচাই</h2><p class="hint">প্রতিটি পরীক্ষার অবস্থা একনজরে।</p>';
+  if (!S.exams.length) h += '<div class="empty">কোনো পরীক্ষা নেই।</div>';
+  S.exams.forEach(function (e) {
+    h += '<h3>' + esc(e.name) + '</h3><ul class="steps" style="list-style:none;padding:0">';
+    var any = false;
+    function line(ok, text) { h += '<li>' + (ok ? '<span class="tag ok">ঠিক আছে</span> ' : '<span class="tag warn">দেখুন</span> ') + text + '</li>'; any = true; }
+    if (e.pub.routine || e.pub.admit) {
+      var withR = e.classes.filter(function (c) { return ((S.routines[e.id] || {})[c] || []).length; });
+      line(withR.length === e.classes.length, 'রুটিন আছে ' + withR.length + '/' + e.classes.length + ' শ্রেণির');
+    }
+    if (e.pub.admit || e.pub.seat) {
+      var withS = e.classes.filter(function (c) { return students(c).length; });
+      line(withS.length === e.classes.length, 'শিক্ষার্থীর তালিকা আছে ' + withS.length + '/' + e.classes.length + ' শ্রেণির');
+    }
+    if (e.pub.seat) {
+      var need = 0; e.classes.forEach(function (c) { need += students(c).length; });
+      var got = (S.seats[e.id] || []).length;
+      line(got > 0 && got >= need, 'আসন বণ্টন হয়েছে ' + got + '/' + need + ' জনের');
+    }
+    if (e.pub.result) {
+      e.classes.forEach(function (c) {
+        var cm = compute(e.id, c), total = cm.rows.length, done = cm.rows.filter(function (r) { return r.complete; }).length;
+        if (!total) return;
+        line(done === total, clsName(c) + ': ফলাফল তৈরি ' + done + '/' + total + ' জনের' + (done < total ? ' (অসম্পূর্ণ নম্বরের শিক্ষার্থীরা প্রকাশে বাদ যাবে)' : ''));
+      });
+    }
+    if (!any) h += '<li><span class="tag warn">কিছু প্রকাশের জন্য চিহ্নিত নেই</span> (শুধু এই পরীক্ষার নোটিশ থাকলে সেটি প্রকাশ হবে)</li>';
+    h += '</ul>';
+  });
+  h += '</div>';
+  // result preview
+  var e = curExam();
+  if (e) {
+    var cm = compute(e.id, UI.cls), done = cm.rows.filter(function (r) { return r.complete; });
+    var pass = done.filter(function (r) { return r.ok; }).length;
+    h += '<div class="card"><h2>ফলাফলের প্রিভিউ</h2><div class="row">' + examPicker() + classPicker(e.classes) + '</div>';
+    if (!done.length) h += '<div class="empty">এই শ্রেণির কোনো সম্পূর্ণ ফলাফল নেই।</div>';
+    else {
+      h += '<p class="hint">মোট ' + done.length + ' জন · উত্তীর্ণ ' + pass + ' · অনুত্তীর্ণ ' + (done.length - pass) + ' · পাসের হার ' + Math.round(pass / done.length * 100) + '%</p>';
+      h += '<div class="tw"><table><tr><th>মেধাক্রম</th><th>রোল</th><th>নাম</th><th>মোট নম্বর</th><th>GPA</th><th>গ্রেড</th><th>ফল</th></tr>';
+      done.slice().sort(function (a, b) { return (a.ok ? a.pos : 9999) - (b.ok ? b.pos : 9999) || a.roll - b.roll; }).forEach(function (r) {
+        h += '<tr><td>' + (r.ok ? r.pos : '—') + '</td><td>' + r.roll + '</td><td>' + esc(r.name) + '</td><td>' + r.total + '</td><td>' + r.gpa.toFixed(2) + '</td><td>' + r.gr + '</td>' +
+          '<td><span class="tag ' + (r.ok ? 'ok' : 'bad') + '">' + (r.ok ? 'উত্তীর্ণ' : 'অনুত্তীর্ণ') + '</span></td></tr>';
+      });
+      h += '</table></div>';
+    }
+    h += '</div>';
+  }
+  h += '<div class="card"><h2>সাইটে প্রকাশ করুন</h2><div class="okbox">সাইটে কী দেখাবে তা ঠিক হয় <b>data.js</b> ফাইল দিয়ে। এই পেজ থেকে সরাসরি সাইট বদলায় না।</div><ol class="steps">' +
+    '<li>নিচের বাটনে চেপে <b>data.js</b> ডাউনলোড করুন।</li><li>সেটি হোস্টিংয়ে <b>index.html</b>-এর পাশে আপলোড করুন (পুরনো data.js বদলে দিন)।</li><li>সাইট রিফ্রেশ করে "পরীক্ষা কেন্দ্র" দেখুন।</li></ol>' +
+    '<div class="row"><button class="b gold" data-act="publish">⬇ data.js ডাউনলোড (প্রকাশ)</button></div>' +
+    '<div class="warnbox">data.js ফাইলটি সবাই খুলে দেখতে পারে। তাই শুধু সেই অংশেই টিক দিন যা সবার জন্য প্রকাশ করতে চান। ফলাফল টিক না দিলে নম্বর ফাইলে যাবে না।</div></div>';
+  h += '<div class="card"><h2>ব্যাকআপ</h2><p class="hint">সব তথ্য শুধু এই ব্রাউজারে জমা থাকে। ব্রাউজারের ডেটা মুছলে বা অন্য কম্পিউটারে গেলে তথ্য থাকবে না, তাই নিয়মিত ব্যাকআপ নিন।</p>' +
+    '<div class="row"><button class="b" data-act="backup">⬇ ব্যাকআপ ডাউনলোড</button><label class="b line" style="cursor:pointer">⬆ ব্যাকআপ ফিরিয়ে আনুন<input type="file" id="restoreFile" accept=".json,application/json" style="display:none"></label>' +
+    '<button class="b red" data-act="reset">সব তথ্য মুছুন</button></div></div>';
+  return h;
+}
+
+/* =========================================================
+   Rendering + events
+   ========================================================= */
+var VIEWS = { exams: vExams, students: vStudents, notices: vNotices, routine: vRoutine, seats: vSeats, marks: vMarks, publish: vPublish };
+function render() {
+  var scroll = window.scrollY;
+  renderTabs();
+  view.innerHTML = VIEWS[UI.tab]();
+  if (UI.tab === 'marks') refreshMarkRows();
+  window.scrollTo(0, scroll);
+}
+$('#tabs').addEventListener('click', function (e) {
+  var b = e.target.closest('button[data-tab]'); if (!b) return;
+  UI.tab = b.getAttribute('data-tab'); render(); window.scrollTo(0, 0);
+});
+
+function onField(e) {
+  var t = e.target, p = t.getAttribute('data-path');
+  if (t.hasAttribute('data-ui')) { UI[t.getAttribute('data-ui')] = t.getAttribute('data-ui') === 'cls' ? +t.value : t.value; render(); return; }
+  if (t.hasAttribute('data-m')) { markInput(t); return; }
+  if (t.hasAttribute('data-parts')) { if (e.type === 'change') setParts(+t.getAttribute('data-parts'), t.value); return; }
+  if (!p) return;
+  var v = t.type === 'checkbox' ? t.checked : t.value;
+  if (t.hasAttribute('data-num')) v = toNum(v);
+  setPath(S, p, v); save();
+  if (/\.(date)$/.test(p) && UI.tab === 'routine') render();
+  if (/\.(full|pass)$/.test(p) && UI.tab === 'marks') refreshMarkRows();
+}
+view.addEventListener('input', onField);
+view.addEventListener('change', onField);
+view.addEventListener('keydown', function (e) {
+  if (e.key !== 'Enter' || !e.target.hasAttribute('data-m')) return;
+  e.preventDefault();
+  var pr = e.target.getAttribute('data-m').split('|'), tr = e.target.closest('tr').nextElementSibling;
+  if (tr) { var n = $('input[data-m$="|' + pr[1] + '|' + pr[2] + '"]', tr); if (n) { n.focus(); n.select(); } }
+});
+
+function setParts(i, txt) {
+  var e = curExam(), sub = S.subjects[e.id][UI.cls][i];
+  var parts = txt.split(/[,،]/).map(function (x) { var m = x.split(':'); return { n: (m[0] || '').trim(), f: toNum(m[1]) }; }).filter(function (p) { return p.n && p.f > 0; });
+  var had = (sub.parts && sub.parts.length) || 0;
+  if (parts.length !== had && hasMarks(e.id, UI.cls, i) && !confirm('এই বিষয়ের অংশ বদলালে এর আগের নম্বর মুছে যাবে। চালিয়ে যাবেন?')) { render(); return; }
+  if (parts.length !== had) clearSubjectMarks(e.id, UI.cls, i);
+  sub.parts = parts.length ? parts : null;
+  if (parts.length) sub.full = parts.reduce(function (a, p) { return a + p.f; }, 0);
+  save(); render();
+}
+function hasMarks(eid, c, si) {
+  var m = ((S.marks[eid] || {})[c]) || {};
+  return Object.keys(m).some(function (r) { return m[r][si] && m[r][si].some(function (v) { return v !== '' && v != null; }); });
+}
+function clearSubjectMarks(eid, c, si) { var m = ((S.marks[eid] || {})[c]) || {}; Object.keys(m).forEach(function (r) { if (m[r]) m[r][si] = []; }); }
+
+var ACTS = {
+  addExam: function () {
+    var type = $('#nxType').value, year = $('#nxYear').value.trim() || String(new Date().getFullYear());
+    var cls = $$('#nxCls input:checked').map(function (x) { return +x.value; });
+    if (!cls.length) { toast('অন্তত একটি শ্রেণি বেছে নিন'); return; }
+    var e = { id: uid(), type: type, year: year, name: type + ' ' + year, classes: cls, pub: { routine: false, admit: false, seat: false, result: false } };
+    S.exams.push(e); UI.exam = e.id; save(); render(); toast('পরীক্ষা যোগ হয়েছে');
+  },
+  delExam: function (el) {
+    var i = +el.getAttribute('data-i'), e = S.exams[i];
+    if (!confirm('"' + e.name + '" এবং এর সব রুটিন, আসন ও নম্বর মুছে যাবে। নিশ্চিত?')) return;
+    ['routines', 'rooms', 'seatOpts', 'seats', 'subjects', 'marks'].forEach(function (k) { delete S[k][e.id]; });
+    S.notices.forEach(function (n) { if (n.exam === e.id) n.exam = ''; });
+    S.exams.splice(i, 1); UI.exam = null; save(); render();
+  },
+  toggleExamClass: function (el) {
+    var e = S.exams[+el.getAttribute('data-i')], c = +el.getAttribute('data-c'), k = e.classes.indexOf(c);
+    if (el.checked && k < 0) e.classes.push(c); if (!el.checked && k > -1) e.classes.splice(k, 1);
+    e.classes.sort(function (a, b) { return a - b; }); save();
+  },
+  addStudent: function () { var l = students(UI.cls), max = l.reduce(function (a, s) { return Math.max(a, +s.roll || 0); }, 0); l.push({ roll: max + 1, name: '', father: '', group: '', photo: '' }); save(); render(); },
+  delStudent: function (el) { students(UI.cls).splice(+el.getAttribute('data-i'), 1); save(); render(); },
+  importStudents: function (el) {
+    var lines = $('#bulk').value.split(/\r?\n/).map(function (l) { return l.trim(); }).filter(Boolean), add = [], bad = 0;
+    lines.forEach(function (l) {
+      var f = l.split(/\t|,|،/).map(function (x) { return x.trim(); }), roll = toNum(f[0]);
+      if (roll === '' || !f[1]) { bad++; return; }
+      add.push({ roll: roll, name: f[1], father: f[2] || '', group: GROUPS.indexOf(f[3]) > -1 ? f[3] : '', photo: '' });
+    });
+    if (!add.length) { toast('কোনো সঠিক লাইন পাওয়া যায়নি'); return; }
+    if (el.getAttribute('data-mode') === 'replace') {
+      if (students(UI.cls).length && !confirm('এই শ্রেণির পুরনো তালিকা মুছে যাবে। নিশ্চিত?')) return;
+      S.students[UI.cls] = add;
+    } else { S.students[UI.cls] = students(UI.cls).concat(add); }
+    S.students[UI.cls].sort(function (a, b) { return a.roll - b.roll; });
+    save(); render(); toast(add.length + ' জন যোগ হয়েছে' + (bad ? ' (' + bad + ' লাইন বাদ)' : ''));
+  },
+  addNotice: function () {
+    var title = $('#ntTitle').value.trim();
+    if (!title) { toast('শিরোনাম লিখুন'); return; }
+    S.notices.push({ id: uid(), exam: $('#ntExam').value, title: title, body: $('#ntBody').value.trim(), date: $('#ntDate').value || todayISO(), link: $('#ntLink').value.trim(), pub: $('#ntPub').checked });
+    save(); render(); toast('নোটিশ যোগ হয়েছে');
+  },
+  delNotice: function (el) { if (!confirm('নোটিশটি মুছবেন?')) return; S.notices.splice(+el.getAttribute('data-i'), 1); save(); render(); },
+  addRoute: function () { var e = curExam(); ensure(S.routines, e.id); (S.routines[e.id][UI.cls] = S.routines[e.id][UI.cls] || []).push({ date: '', time: 'সকাল ১০:০০ – দুপুর ১:০০', subject: '', code: '' }); save(); render(); },
+  delRoute: function (el) { var e = curExam(); S.routines[e.id][UI.cls].splice(+el.getAttribute('data-i'), 1); save(); render(); },
+  sortRoute: function () { var e = curExam(); ((S.routines[e.id] || {})[UI.cls] || []).sort(function (a, b) { return a.date < b.date ? -1 : (a.date > b.date ? 1 : 0); }); save(); render(); },
+  genRoute: function () {
+    var e = curExam(), subs = ((S.subjects[e.id] || {})[UI.cls]) || [];
+    if (!subs.length) { toast('আগে "৬. নম্বর ইনপুট" ট্যাবে বিষয় তালিকা তৈরি করুন'); return; }
+    var cur = ((S.routines[e.id] || {})[UI.cls]) || [];
+    if (cur.length && !confirm('এই শ্রেণির বর্তমান রুটিন মুছে নতুন তৈরি হবে। নিশ্চিত?')) return;
+    var d = parseISO($('#genStart').value || todayISO()), rows = [];
+    subs.forEach(function (s) {
+      while (d.getDay() === 5 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+      rows.push({ date: isoOf(d), time: 'সকাল ১০:০০ – দুপুর ১:০০', subject: s.name, code: '' });
+      d.setDate(d.getDate() + 1);
+    });
+    ensure(S.routines, e.id); S.routines[e.id][UI.cls] = rows; save(); render();
+  },
+  copyRoute: function () {
+    var e = curExam(), from = +$('#copyFrom').value, src = ((S.routines[e.id] || {})[from]) || [];
+    if (!src.length) { toast(clsName(from) + '-এর কোনো রুটিন নেই'); return; }
+    ensure(S.routines, e.id); S.routines[e.id][UI.cls] = JSON.parse(JSON.stringify(src)); save(); render(); toast('কপি হয়েছে');
+  },
+  addRoom: function () { var e = curExam(); (S.rooms[e.id] = S.rooms[e.id] || []).push({ name: 'কক্ষ ' + ((S.rooms[e.id] || []).length + 1), cap: 30 }); save(); render(); },
+  delRoom: function (el) { var e = curExam(); S.rooms[e.id].splice(+el.getAttribute('data-i'), 1); save(); render(); },
+  toggleSeatClass: function (el) {
+    var e = curExam(), o = S.seatOpts[e.id], c = +el.getAttribute('data-c'), k = o.classes.indexOf(c);
+    if (el.checked && k < 0) o.classes.push(c); if (!el.checked && k > -1) o.classes.splice(k, 1); save();
+  },
+  allocate: function () {
+    var e = curExam();
+    if (!(S.rooms[e.id] || []).length) { toast('আগে অন্তত একটি কক্ষ যোগ করুন'); return; }
+    var r = allocate(e.id); save(); render();
+    toast(r.left ? r.placed + ' জনের আসন হয়েছে, ' + r.left + ' জন বাকি' : 'সবার আসন বণ্টন হয়েছে');
+  },
+  addSubj: function () { var e = curExam(); ensure(S.subjects, e.id); (S.subjects[e.id][UI.cls] = S.subjects[e.id][UI.cls] || []).push({ name: '', full: 100, pass: 33, parts: null }); save(); render(); },
+  delSubj: function (el) {
+    var e = curExam(), i = +el.getAttribute('data-i');
+    if (hasMarks(e.id, UI.cls, i) && !confirm('এই বিষয়ের সব নম্বর মুছে যাবে। নিশ্চিত?')) return;
+    S.subjects[e.id][UI.cls].splice(i, 1);
+    var m = ((S.marks[e.id] || {})[UI.cls]) || {}; Object.keys(m).forEach(function (r) { if (m[r]) m[r].splice(i, 1); });
+    save(); render();
+  },
+  defSubj: function () {
+    var e = curExam(), cur = ((S.subjects[e.id] || {})[UI.cls]) || [];
+    if (cur.length && !confirm('বর্তমান বিষয় তালিকা ও নম্বর মুছে নমুনা তালিকা বসবে। নিশ্চিত?')) return;
+    ensure(S.subjects, e.id);
+    S.subjects[e.id][UI.cls] = SUBJECT_SETS[groupFor(UI.cls)].map(function (n) { return { name: n, full: 100, pass: 33, parts: null }; });
+    ensure(S.marks, e.id); S.marks[e.id][UI.cls] = {}; save(); render();
+  },
+  publish: function () { download('data.js', dataJS(false), 'text/javascript'); toast('data.js ডাউনলোড হয়েছে — হোস্টিংয়ে আপলোড করুন'); },
+  backup: function () { download('mh-exam-backup-' + todayISO() + '.json', JSON.stringify(S), 'application/json'); },
+  reset: function () {
+    if (!confirm('সব তথ্য (পরীক্ষা, শিক্ষার্থী, নম্বর সহ) মুছে যাবে। আগে ব্যাকআপ নিয়েছেন তো?')) return;
+    if (!confirm('সত্যিই সব মুছবেন? এটি ফেরানো যাবে না।')) return;
+    S = blank(); UI.exam = null; save(); render();
+  }
+};
+view.addEventListener('click', function (e) {
+  var el = e.target.closest('[data-act]'); if (!el) return;
+  if (el.tagName === 'INPUT' && e.type === 'click' && el.type === 'checkbox') { /* handled on change */ return; }
+  ACTS[el.getAttribute('data-act')](el);
+});
+view.addEventListener('change', function (e) {
+  var el = e.target;
+  if (el.tagName === 'INPUT' && el.type === 'checkbox' && el.hasAttribute('data-act')) ACTS[el.getAttribute('data-act')](el);
+  if (el.id === 'restoreFile' && el.files[0]) {
+    var r = new FileReader();
+    r.onload = function () {
+      try { var o = JSON.parse(r.result); if (!o || !o.exams) throw 0; if (!confirm('বর্তমান সব তথ্য ব্যাকআপের তথ্য দিয়ে বদলে যাবে। নিশ্চিত?')) return; S = Object.assign(blank(), o); UI.exam = null; save(); render(); toast('ব্যাকআপ ফিরিয়ে আনা হয়েছে'); }
+      catch (err) { toast('ফাইলটি সঠিক ব্যাকআপ নয়'); }
+    };
+    r.readAsText(el.files[0]);
+  }
+});
+
+curExam(); render();
+/* =========================================================
+   8. শিক্ষক ও শিক্ষার্থী (Firebase)
+   ========================================================= */
+UI.pp = { rows: null, edit: null, kind: 'teacher', user: null, photo: '', msg: '', filter: 'teacher' };
+var PP_DEPTS = ['বাংলা', 'ইংরেজি', 'গণিত', 'পদার্থবিজ্ঞান', 'রসায়ন', 'জীববিজ্ঞান', 'ICT', 'অর্থনীতি', 'হিসাববিজ্ঞান', 'ব্যবস্থাপনা', 'ইসলাম শিক্ষা', 'সমাজবিজ্ঞান', 'বিজ্ঞান', 'মানবিক', 'ব্যবসায় শিক্ষা'];
+function ppFB() { return window.MH_FB || null; }
+function ppReload() {
+  var fb = ppFB(); if (!fb) return;
+  UI.pp.msg = 'লোড হচ্ছে…'; if (UI.tab === 'people') render();
+  fb.list().then(function (rows) { UI.pp.rows = rows; UI.pp.msg = ''; }).catch(function (e) {
+    UI.pp.rows = []; UI.pp.msg = 'ডেটা আনা যায়নি: ' + (e && e.code || e);
+  }).then(function () { if (UI.tab === 'people') render(); });
+}
+window.addEventListener('mh:fb-ready', function () {
+  ppFB().onAuth(function (u) { UI.pp.user = u; if (u && UI.pp.rows === null) ppReload(); else if (UI.tab === 'people') render(); });
+  ppReload();
+});
+function vPeople() {
+  var P = UI.pp, fb = ppFB(), h = '';
+  if (!fb) return '<div class="card"><h2>Firebase সংযোগ নেই</h2><p class="hint">ইন্টারনেট সংযোগ দেখুন; পাতাটি রিফ্রেশ করুন। (fb.js ও firebase-config.js ফাইল admin.html-এর পাশে থাকতে হবে।)</p></div>';
+  if (!P.user) {
+    return '<div class="card"><h2>অ্যাডমিন লগইন</h2><p class="hint">Firebase Authentication-এ আপনার খোলা ইমেইল ও পাসওয়ার্ড দিন। শুধু লগইন করা অ্যাডমিনই শিক্ষক/শিক্ষার্থী যোগ বা বদলাতে পারবে।</p>' +
+      '<div class="row"><div class="fld"><label>ইমেইল</label><input id="ppEmail" type="email" autocomplete="username"></div><div class="fld"><label>পাসওয়ার্ড</label><input id="ppPass" type="password" autocomplete="current-password"></div></div>' +
+      '<div class="row"><button class="b gold" data-act="ppLogin">লগইন</button></div>' + (P.msg ? '<div class="warnbox">' + esc(P.msg) + '</div>' : '') + '</div>';
+  }
+  var e = P.edit || { kind: P.kind }, st = e.kind === 'student';
+  h += '<div class="card"><div class="row" style="margin-bottom:0"><div style="flex:1"><h2>' + (e.id ? 'তথ্য সম্পাদনা' : 'নতুন ' + (st ? 'শিক্ষার্থী' : 'শিক্ষক') + ' যোগ') + '</h2><p class="hint">লগইন: ' + esc(P.user.email) + '</p></div><button class="b line sm" data-act="ppLogout">লগআউট</button></div>' +
+    '<div class="row"><div class="fld" style="max-width:170px"><label>ধরন</label><select id="ppKind"' + (e.id ? ' disabled' : '') + '>' + opt('teacher', 'শিক্ষক', e.kind) + opt('student', 'শিক্ষার্থী', e.kind) + '</select></div>' +
+    '<div class="fld" style="flex:2"><label>নাম</label><input id="ppName" value="' + esc(e.placeholder ? '' : e.name) + '"></div></div>';
+  if (!st) {
+    h += '<div class="row"><div class="fld"><label>পেশা</label><input id="ppProf" value="' + esc(e.profession == null ? 'শিক্ষক' : e.profession) + '" placeholder="যেমন: শিক্ষক / প্রভাষক"></div>' +
+      '<div class="fld"><label>পদবি</label><input id="ppDesig" value="' + esc(e.designation) + '" placeholder="যেমন: সহকারী শিক্ষক / অধ্যক্ষ"></div>' +
+      '<div class="fld"><label>বিভাগ</label><input id="ppDept" list="ppDeptList" value="' + esc(e.department) + '" placeholder="যেমন: গণিত"><datalist id="ppDeptList">' + PP_DEPTS.map(function (d) { return '<option value="' + esc(d) + '">'; }).join('') + '</datalist></div></div>';
+  } else {
+    h += '<div class="row"><div class="fld" style="max-width:130px"><label>শ্রেণি</label><input id="ppCls" type="number" min="1" max="12" value="' + esc(e.cls || 11) + '"></div>' +
+      '<div class="fld" style="max-width:130px"><label>রোল</label><input id="ppRoll" type="number" min="1" value="' + esc(e.roll || '') + '"></div>' +
+      '<div class="fld"><label>বিভাগ / গ্রুপ</label><input id="ppDept" list="ppDeptList" value="' + esc(e.department) + '" placeholder="যেমন: মানবিক"><datalist id="ppDeptList">' + PP_DEPTS.map(function (d) { return '<option value="' + esc(d) + '">'; }).join('') + '</datalist></div></div>';
+  }
+  var curPhoto = P.photo || e.photo || '';
+  h += '<div class="row"><div class="fld"><label>ছবি (আপনি বেছে নিলে নিজে থেকেই ছোট করা হবে)</label><input type="file" id="ppPhoto" accept="image/*"></div>' +
+    '<div class="fld" style="max-width:90px"><label>প্রিভিউ</label><img id="ppPrev" alt="" style="width:64px;height:64px;border-radius:50%;object-fit:cover;background:#e8e2d3;' + (curPhoto ? '' : 'visibility:hidden') + '" src="' + esc(curPhoto) + '"></div></div>' +
+    '<div class="row"><button class="b gold" data-act="ppSave">' + (e.id ? 'সংরক্ষণ' : '+ যোগ করুন') + '</button>' + (e.id ? '<button class="b line" data-act="ppNew">বাতিল</button>' : '') + '</div>' +
+    (P.msg ? '<div class="warnbox">' + esc(P.msg) + '</div>' : '') + '</div>';
+  var rows = P.rows || [], list = rows.filter(function (r) { return r.kind === P.filter; }).sort(function (a, b) { return (a.order || 0) - (b.order || 0); });
+  h += '<div class="card"><div class="row" style="margin-bottom:6px"><div class="fld" style="max-width:190px"><label>তালিকা</label><select id="ppFilterSel">' + opt('teacher', 'শিক্ষক (' + rows.filter(function (r) { return r.kind === 'teacher'; }).length + ')', P.filter) + opt('student', 'শিক্ষার্থী (' + rows.filter(function (r) { return r.kind === 'student'; }).length + ')', P.filter) + '</select></div>' +
+    '<button class="b line sm" data-act="ppReload">↻ রিফ্রেশ</button>' + (!rows.length ? '<button class="b gold sm" data-act="ppImport">প্রাথমিক তালিকা (people.js) Firebase-এ তুলুন</button>' : '') + '</div>';
+  if (!list.length) h += '<div class="empty">কেউ নেই।' + (!rows.length ? ' উপরের বাটনে প্রাথমিক তালিকা তুলতে পারেন।' : '') + '</div>';
+  else h += '<div class="tw"><table><tr><th></th><th>নাম</th><th>' + (P.filter === 'teacher' ? 'পদবি</th><th>পেশা' : 'শ্রেণি</th><th>রোল') + '</th><th>বিভাগ</th><th></th></tr>' +
+    list.map(function (r) {
+      return '<tr><td>' + (r.photo ? '<img src="' + esc(r.photo) + '" alt="" style="width:34px;height:34px;border-radius:50%;object-fit:cover">' : '') + '</td><td>' + esc(r.placeholder ? '(নাম বসানো হয়নি)' : r.name) + '</td><td>' +
+        (P.filter === 'teacher' ? esc(r.designation || '—') + '</td><td>' + esc(r.profession || '—') : esc(r.cls || '') + '</td><td>' + esc(r.roll || '')) + '</td><td>' + esc(r.department || '—') + '</td><td style="white-space:nowrap">' +
+        '<button class="b line sm" data-act="ppEdit" data-id="' + esc(r.id) + '">সম্পাদনা</button> <button class="b red sm" data-act="ppDel" data-id="' + esc(r.id) + '">মুছুন</button></td></tr>';
+    }).join('') + '</table></div>';
+  return h + '</div>';
+}
+function ppRead() {
+  var kind = $('#ppKind').value, e = UI.pp.edit || {}, st = kind === 'student', g = function (id) { var el = $('#' + id); return el ? el.value.trim() : ''; };
+  var p = { id: e.id, kind: kind, name: g('ppName'), department: g('ppDept'), photo: UI.pp.photo || e.photo || '', order: e.order || (nextOrder(kind)) };
+  if (st) { p.cls = +g('ppCls') || 0; p.roll = +g('ppRoll') || 0; p.profession = ''; p.designation = ''; }
+  else { p.profession = g('ppProf'); p.designation = g('ppDesig'); }
+  return p;
+}
+function nextOrder(kind) { return (UI.pp.rows || []).filter(function (r) { return r.kind === kind; }).reduce(function (m, r) { return Math.max(m, r.order || 0); }, 0) + 1; }
+function ppResize(file, cb) {
+  var rd = new FileReader();
+  rd.onload = function () {
+    var im = new Image();
+    im.onload = function () {
+      var s = Math.min(im.width, im.height), c = document.createElement('canvas'); c.width = c.height = 320;
+      var sx = (im.width - s) / 2, sy = (im.height - s) * 0.2;
+      c.getContext('2d').drawImage(im, sx, sy, s, s, 0, 0, 320, 320);
+      cb(c.toDataURL('image/jpeg', 0.78));
+    };
+    im.onerror = function () { toast('ছবিটি পড়া যায়নি'); };
+    im.src = rd.result;
+  };
+  rd.readAsDataURL(file);
+}
+view.addEventListener('change', function (e) {
+  if (e.target.id === 'ppPhoto' && e.target.files[0]) {
+    ppResize(e.target.files[0], function (d) { UI.pp.photo = d; var pv = $('#ppPrev'); pv.src = d; pv.style.visibility = 'visible'; });
+  }
+  if (e.target.id === 'ppFilterSel') { UI.pp.filter = e.target.value; render(); }
+  if (e.target.id === 'ppKind') { UI.pp.edit = { kind: e.target.value, name: $('#ppName').value }; UI.pp.kind = e.target.value; render(); }
+});
+function ppDone(msg) { UI.pp.msg = ''; UI.pp.edit = null; UI.pp.photo = ''; toast(msg); ppReload(); }
+function ppErr(e) { UI.pp.msg = (e && e.code === 'permission-denied') ? 'অনুমতি নেই — Firestore Rules-এ আপনার ইমেইল বসানো হয়েছে কি দেখুন।' : 'ব্যর্থ: ' + (e && (e.code || e.message) || e); render(); }
+ACTS.ppLogin = function () {
+  UI.pp.msg = 'লগইন হচ্ছে…';
+  ppFB().login($('#ppEmail').value.trim(), $('#ppPass').value).then(function () { UI.pp.msg = ''; }).catch(function (e) {
+    UI.pp.msg = 'লগইন হয়নি (' + (e && e.code || e) + '). ইমেইল/পাসওয়ার্ড দেখুন।'; render();
+  });
+};
+ACTS.ppLogout = function () { ppFB().logout(); UI.pp.rows = null; };
+ACTS.ppReload = function () { ppReload(); };
+ACTS.ppNew = function () { UI.pp.edit = null; UI.pp.photo = ''; render(); };
+ACTS.ppEdit = function (el) {
+  var id = el.getAttribute('data-id'); UI.pp.edit = (UI.pp.rows || []).filter(function (r) { return r.id === id; })[0] || null; UI.pp.photo = ''; render(); window.scrollTo(0, 0);
+};
+ACTS.ppSave = function () {
+  var p = ppRead(); if (!p.name) { toast('নাম লিখুন'); return; }
+  if (p.kind === 'student' && (!p.cls || !p.roll)) { toast('শ্রেণি ও রোল লিখুন'); return; }
+  if (p.photo.length > 140000) { toast('ছবি অনেক বড় — অন্য ছবি দিন'); return; }
+  UI.pp.msg = 'সংরক্ষণ হচ্ছে…'; render();
+  ppFB().save(p).then(function () { ppDone('সংরক্ষিত হয়েছে'); }).catch(ppErr);
+};
+ACTS.ppDel = function (el) {
+  var id = el.getAttribute('data-id'); if (!confirm('মুছে ফেলবেন?')) return;
+  ppFB().remove(id).then(function () { ppDone('মুছে ফেলা হয়েছে'); }).catch(ppErr);
+};
+ACTS.ppImport = function () {
+  var seed = window.MH_PEOPLE_SEED || []; if (!seed.length) { toast('people.js পাওয়া যায়নি'); return; }
+  if (!confirm(seed.length + ' জনের প্রাথমিক তালিকা Firebase-এ তোলা হবে। চালিয়ে যাবেন?')) return;
+  UI.pp.msg = 'তোলা হচ্ছে…'; render();
+  fetchSeedPhotos(seed).then(function (rows) { return ppFB().importMany(rows); }).then(function () { ppDone('তালিকা তোলা হয়েছে'); }).catch(ppErr);
+};
+/* seed photos are files next to index.html — embed them (small JPEGs) so the admin and the site both show them */
+function fetchSeedPhotos(seed) {
+  return Promise.all(seed.map(function (p) {
+    if (!p.photo || /^data:/.test(p.photo)) return p;
+    return fetch(p.photo).then(function (r) { return r.blob(); }).then(function (b) {
+      return new Promise(function (res) { var fr = new FileReader(); fr.onload = function () { var q = Object.assign({}, p); q.photo = fr.result; res(q); }; fr.readAsDataURL(b); });
+    }).catch(function () { return p; });
+  }));
+}
+VIEWS.people = vPeople;
+
+window.__admin = {
+  get S() { return S; }, set S(v) { S = v; }, UI: UI, compute: compute, allocate: allocate, buildPublic: buildPublic, dataJS: dataJS,
+  render: render, save: save, blank: blank, subjectResult: subjectResult, ACTS: ACTS, SUBJECT_SETS: SUBJECT_SETS
+};
+})();
+</script>
+</body>
+</html>
